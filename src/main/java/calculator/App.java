@@ -1,14 +1,12 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Integer> list = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
         int index = 0;
 
         int result = 0;
@@ -41,9 +39,13 @@ public class App {
                     result = first / second;
                     break;
             }
+
             System.out.println("결과: " + result);
-            list.add(result);
+            queue.offer(result);
             index++;
+            if (index == 10) {
+                queue.poll();
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             if (sc.next().equals("exit")) {
